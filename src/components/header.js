@@ -6,7 +6,7 @@ class header extends Component {
         this.onSearch=this.onSearch.bind(props);
     }
     onSearch(){
-        console.log(this.refs);
+        console.log("hello");
     }
     render() {
         return (
