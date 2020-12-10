@@ -1,12 +1,19 @@
-import {Component} from 'react';
+import React, {Component} from 'react';
 
 class header extends Component {
     constructor(props) {
         super(props);
         this.onSearch=this.onSearch.bind(props);
+        this.textInput = React.createRef();
+        this.focusTextInput = this.focusTextInput.bind(this);
+    }
+    focusTextInput() {
+        // Explicitly focus the text input using the raw DOM API
+        // Note: we're accessing "current" to get the DOM node
+        this.textInput.current.focus();
     }
     onSearch(){
-        console.log("hello");
+        console.log(this.refs.noname.value);
     }
     render() {
         return (
@@ -40,8 +47,8 @@ class header extends Component {
                         </li>
                     </ul>
                     <div className="form-inline my-2 my-lg-0">
-                        <input className="form-control mr-sm-2" type="search" ref="input_seach" placeholder="Search" aria-label="Search"/>
-                        <button className="btn btn-outline-success my-2 my-sm-0" onClick={this.onSearch} type="submit">Search</button>
+                        <input className="form-control mr-sm-2" type="search" ref={this.textInput} placeholder="Search" aria-label="Search"/>
+                        <button className="btn btn-outline-success my-2 my-sm-0" onClick={this.focusTextInput} type="submit">Search</button>
                     </div>
                 </div>
             </nav>
